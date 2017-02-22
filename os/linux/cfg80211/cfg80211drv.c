@@ -682,7 +682,7 @@ BOOLEAN CFG80211DRV_StaGet(
 	//getRate(pEntry->HTPhyMode, &DataRate);
 	RtmpDrvRateGet(pAd, pEntry->HTPhyMode.field.MODE, pEntry->HTPhyMode.field.ShortGI,
 				 pEntry->HTPhyMode.field.BW,pEntry->HTPhyMode.field.MCS,
-				 newRateGetAntenna(pEntry->MaxHTPhyMode.field.MCS),&DataRate);
+				 newRateGetAntenna(pEntry->MaxHTPhyMode.field.MCS),(uint32_t *)&DataRate);
 	DataRate /= 500000;
 	DataRate /= 2;
 
@@ -738,7 +738,7 @@ BOOLEAN CFG80211DRV_StaGet(
 	//getRate(PhyInfo, &DataRate);
 	RtmpDrvRateGet(pAd, PhyInfo.field.MODE, PhyInfo.field.ShortGI,
 				 PhyInfo.field.BW,PhyInfo.field.MCS,
-				 newRateGetAntenna(PhyInfo.field.MCS),&DataRate);
+				 newRateGetAntenna(PhyInfo.field.MCS),(uint32_t *)&DataRate);
 	DataRate /= 500000;
 	DataRate /= 2;
 

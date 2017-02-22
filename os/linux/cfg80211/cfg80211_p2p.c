@@ -103,7 +103,7 @@ VOID CFG80211RemainOnChannelTimeout(
 	{
 		DBGPRINT(RT_DEBUG_TRACE, ("CFG80211_ROC: RemainOnChannelTimeout -- FINISH\n"));
 
-        	cfg80211_remain_on_channel_expired( CFG80211_GetEventDevice(pAd),
+        	cfg80211_remain_on_channel_expired( CFG80211_GetEventDevice((struct wireless_dev *)pAd),
         		pCfg80211_ctrl->Cfg80211ChanInfo.cookie, pCfg80211_ctrl->Cfg80211ChanInfo.chan,
         		GFP_KERNEL);
 

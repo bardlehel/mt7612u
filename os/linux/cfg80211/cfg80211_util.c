@@ -972,7 +972,7 @@ void CFG80211OS_P2pClientConnectResultInform(
 
 BOOLEAN CFG80211OS_RxMgmt(IN struct net_device *pNetDev, IN int32_t freq, IN u8 *frame, IN uint32_t len)
 {
-	return cfg80211_rx_mgmt(pNetDev,
+	return cfg80211_rx_mgmt((struct wireless_dev *)pNetDev,
 				freq,
 				0,       //CFG_TODO return 0 in dbm
 				frame,
@@ -985,7 +985,7 @@ VOID CFG80211OS_TxStatus(IN struct net_device *pNetDev, IN int32_t cookie, IN u8
 	struct wireless_dev *pWdev;
 	pWdev = pNetDev->ieee80211_ptr ;
 
-	return cfg80211_mgmt_tx_status(pNetDev, cookie, frame, len, ack, GFP_ATOMIC);
+	return cfg80211_mgmt_tx_status(pWdev, cookie, frame, len, ack, GFP_ATOMIC);
 }
 
 VOID CFG80211OS_NewSta(IN struct net_device *pNetDev, IN const u8 *mac_addr, IN const u8 *assoc_frame, IN uint32_t assoc_len)
